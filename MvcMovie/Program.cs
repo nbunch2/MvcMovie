@@ -13,7 +13,7 @@ namespace MvcMovie
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args).Build();
+            var host = BuildWebHost(args);
 
             using (var scope = host.Services.CreateScope())
             {
@@ -23,7 +23,7 @@ namespace MvcMovie
                 {
                     //var context = services.GetRequiredService<MvcMovieContext>();
                    // context.Database.Migrate();
-                    //SeedData.Initialize(services);
+                    SeedData.Initialize(services);
                 }
                 catch (Exception ex)
                 {
@@ -35,8 +35,9 @@ namespace MvcMovie
             host.Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .Build();
     }
 }

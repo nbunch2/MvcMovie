@@ -22,7 +22,7 @@ namespace MvcMovie
                 try
                 {
                     //var context = services.GetRequiredService<MvcMovieContext>();
-                   // context.Database.Migrate();
+                  // context.Database.Migrate();
                     SeedData.Initialize(services);
                 }
                 catch (Exception ex)
